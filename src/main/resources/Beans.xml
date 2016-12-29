@@ -8,9 +8,15 @@
        default-destroy-method="destroy">
 
     <!-- A simple bean definition -->
-    <bean id="hello-world" class="com.shengtian.service.HelloWorld" lazy-init="default" init-method="init" destroy-method="destroy"
+    <bean name="hello-nl" class="com.shengtian.service.hello.HelloNetherlands" lazy-init="default" init-method="init"
+          destroy-method="destroy"
           scope="singleton">
-        <property name="message" value="Hello World!"/>
+        <property name="message1" value="Hello"/>
+        <property name="message2" value="Netherlands"/>
+    </bean>
+
+    <bean name="hello-cn" class="com.shengtian.service.hello.HelloChina" parent="hello-nl">
+        <property name="message2" value="China"/>
     </bean>
 
 </beans>

@@ -1,5 +1,6 @@
 package com.shengtian.service;
 
+import com.shengtian.service.hello.HelloWorld;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,8 +14,10 @@ public class TmcsServerApplication {
 //		SpringApplication.run(TmcsServerApplication.class, args);
 
         AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml", "BeansOther.xml");
-        HelloWorld obj = (HelloWorld) context.getBean("hello-world");
-        obj.greet();
+        HelloWorld obj1 = (HelloWorld) context.getBean("hello-nl");
+        HelloWorld obj2 = (HelloWorld) context.getBean("hello-cn");
+        obj1.greet();
+        obj2.greet();
 
         // This will ensures a graceful shutdown and calls the relevant destroy methods
         context.registerShutdownHook();
