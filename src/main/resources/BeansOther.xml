@@ -7,10 +7,6 @@
        default-init-method="init"
        default-destroy-method="destroy">
 
-    <bean id="helloWorld" class="com.shengtian.service.HelloWorld" lazy-init="default" init-method="init" destroy-method="destroy"
-          scope="singleton">
-        <property name="message" value="Hello World!"/>
-    </bean>
-
     <bean class="com.shengtian.service.InitHelloWorld"/>
+
 </beans>
