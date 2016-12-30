@@ -1,5 +1,5 @@
 
-package com.shengtian.service.hello;
+package com.shengtian.service.dojo.hello;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextStartedEvent;

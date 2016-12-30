@@ -7,6 +7,6 @@
        default-init-method="init"
        default-destroy-method="destroy">
 
-    <bean class="com.shengtian.service.hello.InitHelloWorld"/>
+    <bean class="com.shengtian.service.dojo.hello.InitHelloWorld"/>
 
 </beans>

@@ -1,4 +1,4 @@
-package com.shengtian.service.hello;
+package com.shengtian.service.dojo.hello;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

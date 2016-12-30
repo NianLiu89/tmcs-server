@@ -1,4 +1,4 @@
-package com.shengtian.service.hello;
+package com.shengtian.service.dojo.hello;
 
 public class HelloChina extends HelloWorld {
 

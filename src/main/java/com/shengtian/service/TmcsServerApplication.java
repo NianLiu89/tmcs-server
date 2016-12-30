@@ -1,6 +1,6 @@
 package com.shengtian.service;
 
-import com.shengtian.service.hello.HelloWorld;
+import com.shengtian.service.dojo.hello.HelloWorld;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

@@ -7,11 +7,11 @@
 >
     <context:annotation-config/>
 
-    <bean name="hello-nl" class="com.shengtian.service.hello.HelloNetherlands">
+    <bean name="hello-nl" class="com.shengtian.service.dojo.hello.HelloNetherlands">
         <property name="message1" value="Hello"/>
         <property name="message2" value="Netherlands"/>
     </bean>
-    <bean name="hello-cn" class="com.shengtian.service.hello.HelloChina" parent="hello-nl">
+    <bean name="hello-cn" class="com.shengtian.service.dojo.hello.HelloChina" parent="hello-nl">
         <property name="message2" value="China"/>
     </bean>
 
