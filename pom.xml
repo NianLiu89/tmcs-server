@@ -23,6 +23,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <guava.version>20.0</guava.version>
+        <lombok.version>1.16.12</lombok.version>
+        <aspectj.version>1.8.6</aspectj.version>
+        <inject.version>1</inject.version>
+        <paradox.version>1.0</paradox.version>
     </properties>
 
     <dependencies>
@@ -40,7 +45,7 @@
         <dependency>
             <groupId>com.shengtian.paradox</groupId>
             <artifactId>paradox</artifactId>
-            <version>1.0</version>
+            <version>${paradox.version}</version>
         </dependency>
 
         <dependency>
@@ -52,20 +57,26 @@
         <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
-            <version>1</version>
+            <version>${inject.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.8.6</version>
+            <version>${aspectj.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.12</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
 
     </dependencies>
