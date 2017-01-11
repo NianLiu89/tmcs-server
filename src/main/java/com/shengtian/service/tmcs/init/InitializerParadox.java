@@ -1,6 +1,6 @@
-package com.shengtian.service.tmcs.data.init;
+package com.shengtian.service.tmcs.init;
 
-import com.shengtian.service.tmcs.data.DataPoint;
+import com.shengtian.service.tmcs.domain.DataPoint;
 import com.shengtian.service.tmcs.parsing.ConfigFileParser;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +15,6 @@ public class InitializerParadox implements Initializer {
 
     @Override
     public Set<DataPoint> initializeDataPoints() {
-        try {
-            return configFileParser.parse();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return configFileParser.parse();
     }
 }

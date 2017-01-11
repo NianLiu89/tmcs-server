@@ -16,7 +16,6 @@ public enum ConfigFileAttribute {
 
     private String paradoxName;
 
-
     ConfigFileAttribute(String paradoxName) {
         this.paradoxName = paradoxName;
     }

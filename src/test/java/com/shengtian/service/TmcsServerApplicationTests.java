@@ -1,9 +1,7 @@
 package com.shengtian.service;
 
-import com.shengtian.service.tmcs.data.DataPoint;
-import com.shengtian.service.tmcs.data.DataService;
-import com.shengtian.service.tmcs.data.init.Initializer;
-import com.shengtian.service.tmcs.parsing.CsvFileParser;
+import com.shengtian.service.tmcs.domain.DataPoint;
+import com.shengtian.service.tmcs.DataService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

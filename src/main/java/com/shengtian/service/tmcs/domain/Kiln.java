@@ -1,4 +1,4 @@
-package com.shengtian.service.tmcs.data;
+package com.shengtian.service.tmcs.domain;
 
 import com.google.common.collect.Lists;
 import lombok.Getter;
