@@ -26,7 +26,7 @@ public class DataService {
         this.dataFileParser = dataFileParser;
     }
 
-    @Scheduled(fixedRate = 100)
+    @Scheduled(fixedRate = 1000)
     public void update() {
         Map<String, String> dataPointCodeToValueMap = dataFileParser.parse();
         dataPoints.forEach(dataPoint -> {
@@ -39,10 +39,11 @@ public class DataService {
             }
         });
 
+        System.out.println("[UPDATE] updating data");
         System.out.print("[UPDATE]" + LocalDateTime.now() + "\t");
         System.out.println(dataPoints.stream()
                 .filter(dp -> dataPointCodeToValueMap.containsKey(dp.getCode()))
-                .map(dp -> dp.getCode() + ": " + dp.getTemperature()).collect(Collectors.joining("|")));
+                .map(dp -> dp.getCode() + ": " + dp.getTemperature()).collect(Collectors.joining(" | ")));
     }
 
     public List<DataPoint> getSortedDataPointsBy(String kilnCode) {
