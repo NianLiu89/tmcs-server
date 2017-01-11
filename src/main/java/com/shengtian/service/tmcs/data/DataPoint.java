@@ -2,27 +2,21 @@ package com.shengtian.service.tmcs.data;
 
 import lombok.*;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@Data
+@Builder
+@Getter
 public class DataPoint {
 
-    @Setter(AccessLevel.NONE)
-    String code;  // this field is immutable, as the identifier of a data point
-
-    String kilnCode;
+    String code;
+    String kiln;
     int slot;
-    Position position;
+    Position position;      //TODO check how to set this field
 
-    double maxTemperature;
-    double minTemperature;
+    double maxTemperature;  //TODO can this field be changed in run time?
+    double minTemperature;  //TODO can this field be changed in run time?
+
+    @Setter
     double temperature;
 
     int moduleId;
     int channelId;
-
-    public DataPoint(String code) {
-        this.code = code;
-    }
-
-
 }
