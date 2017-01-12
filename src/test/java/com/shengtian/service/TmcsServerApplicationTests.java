@@ -1,7 +1,7 @@
 package com.shengtian.service;
 
 import com.shengtian.service.tmcs.domain.DataPoint;
-import com.shengtian.service.tmcs.DataService;
+import com.shengtian.service.tmcs.DataPointsService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +16,7 @@ import java.util.Set;
 public class TmcsServerApplicationTests {
 
 	@Inject
-	DataService dataService;
+    DataPointsService dataService;
 
 	@Test
 	public void contextLoads() {

@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class DataService {
+public class DataPointsService {
 
     @Getter
     private Set<DataPoint> dataPoints;
@@ -21,7 +21,7 @@ public class DataService {
     private DataFileParser dataFileParser;
 
     @Inject
-    public DataService(Initializer initializer, DataFileParser dataFileParser) {
+    public DataPointsService(Initializer initializer, DataFileParser dataFileParser) {
         this.dataPoints = initializer.initializeDataPoints();
         this.dataFileParser = dataFileParser;
     }
