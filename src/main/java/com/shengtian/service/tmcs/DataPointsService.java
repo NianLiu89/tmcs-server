@@ -4,6 +4,7 @@ import com.shengtian.service.tmcs.domain.DataPoint;
 import com.shengtian.service.tmcs.init.Initializer;
 import com.shengtian.service.tmcs.parsing.DataFileParser;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,9 @@ public class DataPointsService {
 
     private DataFileParser dataFileParser;
 
+    @Value("${tmcs.data.source.isProduction:false}")
+    private boolean isDataFromProduction;
+
     @Inject
     public DataPointsService(Initializer initializer, DataFileParser dataFileParser) {
         this.dataPoints = initializer.initializeDataPoints();
@@ -28,7 +32,7 @@ public class DataPointsService {
 
     @Scheduled(fixedRate = 1000)
     public void update() {
-        Map<String, String> dataPointCodeToValueMap = dataFileParser.parse();
+        Map<String, String> dataPointCodeToValueMap = isDataFromProduction ? getRealData() : getFakeData();
         dataPoints.forEach(dataPoint -> {
             final String stringValue = dataPointCodeToValueMap.getOrDefault(dataPoint.getCode(), null);
 
@@ -51,6 +55,20 @@ public class DataPointsService {
                 .filter(dataPoint -> Objects.equals(dataPoint.getKiln(), kilnCode))
                 .sorted(Comparator.comparingInt(DataPoint::getSlot))
                 .collect(Collectors.toList());
+    }
+
+    private Map<String, String> getRealData() {
+        return dataFileParser.parse();
+    }
+
+    private Map<String, String> getFakeData() {
+        Map<String, String> fakeDatasource = new HashMap<>();
+        Random r = new Random();
+        int range = 100;
+        fakeDatasource.put("TA6_BM", String.valueOf(r.nextDouble() * range));
+        fakeDatasource.put("TB5_TM", String.valueOf(r.nextDouble() * range));
+        fakeDatasource.put("T118_TM", String.valueOf(r.nextDouble() * range));
+        return fakeDatasource;
     }
 
 }
