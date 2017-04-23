@@ -19,7 +19,8 @@ public class DataPointsController {
     private DataPointsService dataPointsService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody  String getAll() throws JsonProcessingException {
+    @ResponseBody
+    public String getAll() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         Set<DataPoint> dataPoints = dataPointsService.getDataPoints();
         return mapper.writeValueAsString(dataPoints);

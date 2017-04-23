@@ -30,11 +30,11 @@ public class DataPointsService {
         this.dataFileParser = dataFileParser;
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 5000)
     public void update() {
-        Map<String, String> dataPointCodeToValueMap = isDataFromProduction ? getRealData() : getFakeData();
+        Map<String, String> codeToTemperatureMap = isDataFromProduction ? getRealData() : getFakeData();
         dataPoints.forEach(dataPoint -> {
-            final String stringValue = dataPointCodeToValueMap.getOrDefault(dataPoint.getCode(), null);
+            final String stringValue = codeToTemperatureMap.getOrDefault(dataPoint.getCode(), null);
 
             if (stringValue == null) {
                 dataPoint.setTemperature(null);
@@ -43,10 +43,9 @@ public class DataPointsService {
             }
         });
 
-        System.out.println("[UPDATE] updating data");
         System.out.print("[UPDATE]" + LocalDateTime.now() + "\t");
         System.out.println(dataPoints.stream()
-                .filter(dp -> dataPointCodeToValueMap.containsKey(dp.getCode()))
+                .filter(dp -> codeToTemperatureMap.containsKey(dp.getCode()))
                 .map(dp -> dp.getCode() + ": " + dp.getTemperature()).collect(Collectors.joining(" | ")));
     }
 
@@ -62,13 +61,15 @@ public class DataPointsService {
     }
 
     private Map<String, String> getFakeData() {
-        Map<String, String> fakeDatasource = new HashMap<>();
+        return dataPoints.stream()
+                .collect(Collectors.toMap(DataPoint::getCode, dp -> randomeTemp()));
+
+    }
+
+    private static String randomeTemp() {
         Random r = new Random();
-        int range = 100;
-        fakeDatasource.put("TA6_BM", String.valueOf(r.nextDouble() * range));
-        fakeDatasource.put("TB5_TM", String.valueOf(r.nextDouble() * range));
-        fakeDatasource.put("T118_TM", String.valueOf(r.nextDouble() * range));
-        return fakeDatasource;
+        int range = 200;
+        return String.valueOf(r.nextDouble() * range);
     }
 
 }
