@@ -30,7 +30,7 @@ public class DataPointsService {
         this.dataFileParser = dataFileParser;
     }
 
-    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedRate = 10000)
     public void update() {
         Map<String, String> dataPointCodeToValueMap = isDataFromProduction ? getRealData() : getFakeData();
         dataPoints.forEach(dataPoint -> {
